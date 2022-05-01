@@ -1,0 +1,19 @@
+{
+  "required_api_version": "^2.0.0",
+  "name": "Almanaque",
+  "description": "This extension allows to check calendar directly from Ulauncher using cal command. TODO: Add GCalendar (and another calendar management support to list recent events as well)",
+  "developer_name": "Carlos G. Martín Pérez",
+  "icon": "images/icon.png",
+  "options": {
+    "query_debounce": 0.01
+  },
+  "preferences": [
+    {
+      "id": "cmd",
+      "type": "keyword",
+      "name": "Almanaque",
+      "description": "Simple almanac",
+      "default_value": "alm"
+    }
+  ]
+}
