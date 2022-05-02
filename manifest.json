@@ -5,7 +5,7 @@
   "developer_name": "Carlos G. Martín Pérez",
   "icon": "images/icon.png",
   "options": {
-    "query_debounce": 0.01
+    "query_debounce": 0.5
   },
   "preferences": [
     {
@@ -14,6 +14,36 @@
       "name": "Almanaque",
       "description": "Simple almanac",
       "default_value": "alm"
-    }
+    },
+	{
+		"id": "google_cal",
+		"type": "select",
+		"name": "Google Calendar integration",
+		"description": "Allow to acces your Google Calendar events. Plugin will ask to allow it to your calendar if needed. WARINING Once authorized by google, select 'no' option will remove token file from system (authorization will be needed again)",
+		"default_value": "no",
+		"options": [
+			{"value":"yes", "text": "yes (needs google authorization)"},
+			{"value":"no", "text": "no (remove authorization token if exists)"}
+		]
+	},
+	{
+      "id": "max_events",
+      "type": "select",
+      "name": "Max retrieved events",
+      "description": "Indicate max event to retrieve from Google Calendar (not greater to:10)",
+      "default_value": 5,
+	  "options":[
+			{"value":1 , "text": "1"},
+			{"value":2 , "text": "2"},
+			{"value":3 , "text": "3"},
+			{"value":4 , "text": "4"},
+			{"value":5 , "text": "5"},
+			{"value":6 , "text": "6"},
+			{"value":7 , "text": "7"},
+			{"value":8 , "text": "8"},
+			{"value":9 , "text": "9"},
+			{"value":10 , "text": "10"}
+	  ]
+	}
   ]
 }
