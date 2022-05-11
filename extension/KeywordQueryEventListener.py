@@ -6,8 +6,8 @@ class KeywordQueryEventListener(EventListener):
 
     def on_event(self, event, extension): 
         # Initialize Google Calendar stuff
-        if "google_cal" in extension.preferences and extension.preferences["google_cal"] == "yes":
-            extension.calendar.initialize_google()
+        if "google_cal" in extension.preferences and extension.preferences["google_cal"] != "":
+            extension.calendar.initialize_google(extension.preferences["google_cal"])
 
         # Prepare needed arguments
         max_ev = extension.preferences["max_events"] if "max_events" in extension.preferences else 5

@@ -17,20 +17,16 @@
     },
 	{
 		"id": "google_cal",
-		"type": "select",
-		"name": "Google Calendar integration",
-		"description": "Allow to acces your Google Calendar events. Plugin will ask to allow it to your calendar if needed. WARINING Once authorized by google, select 'no' option will remove token file from system (authorization will be needed again)",
-		"default_value": "no",
-		"options": [
-			{"value":"yes", "text": "yes (needs google authorization)"},
-			{"value":"no", "text": "no (remove authorization token if exists)"}
-		]
+		"type": "input",
+		"name": "Google Calendar developer API key",
+		"description": "1.Go to https://console.developers.google.com/. 2.Create new project. 3.Click enable API, and select Google Calendar API. 4.Create credentials (API key. 5.Paste the key in this field)",
+		"default_value": ""
 	},
 	{
       "id": "max_events",
       "type": "select",
       "name": "Max retrieved events",
-      "description": "Indicate max event to retrieve from Google Calendar (not greater to:10)",
+      "description": "Indicate max event to retrieve from Google Calendar (max 10)",
       "default_value": 5,
 	  "options":[
 			{"value":1 , "text": "1"},
