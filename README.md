@@ -17,9 +17,4 @@ To allow Google Calendar integration, you need to create a Google Calendar Appli
 At the end of the process, store generated credentials.json in ~/.local/share/ulauncher/extensions/com.github.carlosmape.ulauncher-calendar/ folder to allow this plugin to read and use your own credentials
 
 Finally go to extension preferences and able Google Calendar integration option
-![config screen](https://github.com/Carlosmape/ulauncher-calendar/blob/master/images/preferences.png?raw=true)
-
-Notice that if Google Calendar integration changes to "No" and then to "Yes" (saving coniguration on each value change) The Google Integration will force to reinitialize. It means, if the credentials.json is valid, Google will ask you to allow this plugin integration as in the following sample image:
-
-![Google OAuth](https://github.com/Carlosmape/ulauncher-calendar/blob/master/images/oauth_1.png?raw=true)
-![Google Oauth2](https://github.com/Carlosmape/ulauncher-calendar/blob/master/images/oaut_2.png?raw=true)
+![config screen](https://github.com/Carlosmape/ulauncher-calendar/blob/master/images/oauth_2.png?raw=true)
