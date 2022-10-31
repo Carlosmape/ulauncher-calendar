@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List
 import logging
 from ulauncher.api.client.EventListener import EventListener
@@ -6,7 +7,7 @@ from ulauncher.api.client.Extension import Extension
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
 from ulauncher.api.shared.event import KeywordQueryEvent, PreferencesUpdateEvent
 from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
-from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
+from ulauncher.api.shared.action.OpenUrlAction import OpenUrlAction
 from ulauncher.api.shared.action.CopyToClipboardAction import CopyToClipboardAction
 from extension.CalendarManager import CalendarManager
 
@@ -32,16 +33,35 @@ class AlmanacExtension(Extension):
             icon = SELF_ICON,
             name=l_cal[0],
             description=" " + l_cal[1].replace(" ", "  "),
-            on_enter=CopyToClipboardAction(str_cal))
-
+            on_enter = CopyToClipboardAction(str_cal))
 
     def google_ev_to_extensionresult(self, ev):
         """Converts cal cmd std output to an ExtensionResultItem"""
+        # Event date
+        if 'date' in ev['start']:
+            # It is all-day event
+            dt = datetime.strptime(ev['start']['date'], "%Y-%m-%d")
+            event_name = dt.strftime("%x")
+        else:
+        # It is one-day event
+            st_dt = datetime.strptime(ev['start']['dateTime'], "%Y-%m-%dT%H:%M:%S%z")
+            en_dt = datetime.strptime(ev['end']['dateTime'], "%Y-%m-%dT%H:%M:%S%z")
+            if st_dt.date() == en_dt.date():
+                event_name = st_dt.strftime("%x %X")
+                event_name += " - " + en_dt.strftime("%X")
+            else:
+                event_name = st_dt.strftime("%x %X")
+                event_name += " - " + en_dt.strftime("%x %X")
+        # Event name
+        event_name += " | " + ev['summary'].capitalize()
+        # Extract event metadata
+        event_metadata = "📬 " + ev['organizer']['email'] + " "
+
         return ExtensionResultItem(
             icon = GOOGLE_ICON,
-            name = ev['summary'],
-            description = ev['start'].get('dateTime', ev['start'].get('date')),
-            on_enter = HideWindowAction())
+            name = event_name,
+            description = event_metadata,
+            on_enter = OpenUrlAction(ev['htmlLink']))
 
 
     def GetExtensionResult(self, query: str, max_ev: int) -> List[ExtensionResultItem]:
