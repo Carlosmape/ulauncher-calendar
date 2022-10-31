@@ -1,45 +1,49 @@
 {
-  "required_api_version": "^2.0.0",
-  "name": "Almanaque",
-  "description": "This extension allows to check calendar directly from Ulauncher using cal command. Integration with GoogleCalendar \nTODO:(integrate another calendar management support to list recent events as well)",
-  "developer_name": "Carlos G. Martín Pérez",
-  "icon": "images/icon.png",
-  "options": {
-    "query_debounce": 0.5
-  },
-  "preferences": [
-    {
-      "id": "cmd",
-      "type": "keyword",
-      "name": "Almanaque",
-      "description": "Simple almanac",
-      "default_value": "alm"
-    },
-	{
-		"id": "google_cal",
-		"type": "input",
-		"name": "Google Calendar developer API key",
-		"description": "1.Go to https://console.developers.google.com/. 2.Create new project. 3.Click enable API, and select Google Calendar API. 4.Create credentials (API key. 5.Paste the key in this field)",
-		"default_value": ""
+	"required_api_version": "^2.0.0",
+	"name": "Almanaque",
+	"description": "This extension allows to check calendar directly from Ulauncher using cal command. Integration with GoogleCalendar \nTODO:(integrate another calendar management support to list recent events as well)",
+	"developer_name": "Carlos G. Martín Pérez",
+	"icon": "images/icon.png",
+	"options": {
+		"query_debounce": 0.5
 	},
-	{
-      "id": "max_events",
-      "type": "select",
-      "name": "Max retrieved events",
-      "description": "Indicate max event to retrieve from Google Calendar (max 10)",
-      "default_value": 5,
-	  "options":[
-			{"value":1 , "text": "1"},
-			{"value":2 , "text": "2"},
-			{"value":3 , "text": "3"},
-			{"value":4 , "text": "4"},
-			{"value":5 , "text": "5"},
-			{"value":6 , "text": "6"},
-			{"value":7 , "text": "7"},
-			{"value":8 , "text": "8"},
-			{"value":9 , "text": "9"},
-			{"value":10 , "text": "10"}
-	  ]
-	}
-  ]
+	"preferences": [
+		{
+			"id": "cmd",
+			"type": "keyword",
+			"name": "Almanaque",
+			"description": "Use this keyword to manage this extension. Query text will be used as cal commands arguments",
+			"default_value": "alm"
+		},
+		{
+			"id": "google_cal",
+			"type": "select",
+			"name": "Google Calendar integration",
+			"description": "Update this field to reinitialize Calendar Integration. Ensure credentials.json is placed in ~/.local/share/ulauncher/extensions/com.github.carlosmape.ulauncher-calendar/",
+			"default_value": 0,
+			"options":[
+				{"value":0 , "text": "No"},
+				{"value":1 , "text": "Yes"}
+			]
+		},
+		{
+			"id": "max_events",
+			"type": "select",
+			"name": "Max retrieved events",
+			"description": "Indicate max event to retrieve from Google Calendar (max 10)",
+			"default_value": 5,
+			"options":[
+				{"value":1 , "text": "1"},
+				{"value":2 , "text": "2"},
+				{"value":3 , "text": "3"},
+				{"value":4 , "text": "4"},
+				{"value":5 , "text": "5"},
+				{"value":6 , "text": "6"},
+				{"value":7 , "text": "7"},
+				{"value":8 , "text": "8"},
+				{"value":9 , "text": "9"},
+				{"value":10 , "text": "10"}
+			]
+		}
+	]
 }
